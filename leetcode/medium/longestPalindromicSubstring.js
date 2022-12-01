@@ -19,7 +19,7 @@
  * @param {string} s
  * @return {string}
  */
- var longestPalindrome = function(s) {
+var longestPalindrome = function(s) {
     let maxCount = 1;
     let startIdx = 0;
     let endIdx = 0;

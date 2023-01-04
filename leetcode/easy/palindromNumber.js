@@ -37,3 +37,34 @@ var isPalindrome = function(x) {
     }
     return true;
 };
+
+// Solution by not converting to string
+var isPalindrome2 = function(x) {
+    if(x < 0){
+        return false;
+    }
+    let arr = [];
+    let divisor = 10;
+    let expCount = 0;
+    while(divisor / 10 <= x){
+        let remainder = x % divisor;
+        let sum = 0;
+        for(let i = 0; i < arr.length; i++){
+            sum = sum + arr[i] * 10**i;
+        }
+        remainder = remainder - sum;
+        remainder = remainder / 10**expCount;
+        arr.push(remainder);
+        expCount += 1;
+        divisor = divisor * 10;
+    }
+    for(let j = 0; j < arr.length; j++){
+        if(j === arr.length - 1 - j){
+            break;
+        }
+        if(arr[j] !== arr[arr.length - 1 - j]){
+            return false;
+        }
+    }
+    return true;
+};
